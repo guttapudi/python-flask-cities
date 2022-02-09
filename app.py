@@ -17,6 +17,10 @@ cities = [
 def get_cities():
   return jsonify(cities)
 
+@app.route('/ping')
+def ping():
+  return "pong"
+
 port = os.getenv('PORT', '8000')
 
 if __name__ == '__main__':
