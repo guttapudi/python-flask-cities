@@ -37,6 +37,7 @@ spec:
   - port: 8000
     protocol: TCP
     targetPort: 8000
+    nodePort: 30007
   selector:
     app: cities-app
 
