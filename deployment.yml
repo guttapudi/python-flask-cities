@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cities-app-deployment
+  name: cities-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cities-app
+  template:
+    metadata:
+      labels:
+        app: cities-app
+    spec:
+      containers:
+      - image: us.icr.io/merck/converse
+        name: cities-app
+        resources: {}
+        ports:
+        - containerPort: 8000
+      imagePullSecrets:
+      - name: all-icr-io
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cities-app-svc
+  name: cities-app-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: cities-app-deployment
+
+
