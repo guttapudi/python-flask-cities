@@ -38,6 +38,6 @@ spec:
     protocol: TCP
     targetPort: 8000
   selector:
-    app: cities-app-deployment
+    app: cities-app
 
 
